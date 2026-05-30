@@ -544,6 +544,14 @@ a:hover { color: var(--navy); }
   flex-wrap: wrap;
 }
 
+.img-credit {
+  font-size: .7rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-top: 6px;
+  font-style: italic;
+}
+
 .writing-pullquote {
   border-left: 3px solid var(--teal);
   padding-left: 16px;
