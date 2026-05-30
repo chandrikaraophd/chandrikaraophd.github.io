@@ -651,6 +651,83 @@ a:hover { color: var(--navy); }
   text-decoration: none;
 }
 
+/* Research Highlights */
+.writing-highlights { margin-top: 48px; }
+
+.writing-subhead {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: 20px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.highlight-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow .2s, transform .2s;
+}
+.highlight-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.highlight-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.highlight-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.highlight-img--placeholder {
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.highlight-img--placeholder span {
+  font-size: .8rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.highlight-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.highlight-body h3 {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.5;
+}
+
+.highlight-body p {
+  font-size: .875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.writing-tag--highlight {
+  color: #5b3a8c;
+  background: #f0eafa;
+}
+
 /* =============================================
    Contact
    ============================================= */
@@ -767,6 +844,7 @@ a:hover { color: var(--navy); }
   .writing-featured { flex-direction: column; gap: 24px; }
   .writing-featured-img { width: 120px; }
   .writing-grid { grid-template-columns: 1fr; }
+  .highlight-grid { grid-template-columns: 1fr; }
 
   /* Stats */
   .stat-row { gap: 32px; }
