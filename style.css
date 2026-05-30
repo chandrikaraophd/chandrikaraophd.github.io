@@ -597,6 +597,20 @@ a:hover { color: var(--navy); }
   transform: translateY(-2px);
 }
 
+.writing-card-img {
+  width: calc(100% + 56px);
+  margin: -28px -28px 16px -28px;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.writing-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 75%;
+}
+
 .writing-tag {
   display: inline-block;
   font-size: .7rem;
@@ -665,8 +679,13 @@ a:hover { color: var(--navy); }
 
 .highlight-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+.writing-tag--methods {
+  color: #1e5f8e;
+  background: #deeaf5;
 }
 
 .highlight-card {
@@ -683,13 +702,22 @@ a:hover { color: var(--navy); }
 
 .highlight-img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 7;
   overflow: hidden;
+  position: relative;
+}
+.highlight-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
 }
 .highlight-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.95) saturate(0.8);
 }
 .highlight-img--placeholder {
   background: var(--bg-alt);
