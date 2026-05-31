@@ -719,6 +719,47 @@ a:hover { color: var(--navy); }
   object-fit: cover;
   filter: brightness(0.95) saturate(0.8);
 }
+.highlight-img img.no-filter {
+  filter: none;
+}
+.highlight-img--contain {
+  background: #0f1f35;
+  position: relative;
+}
+.highlight-img--contain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 35%, rgba(15, 31, 53, 0.9) 100%),
+    linear-gradient(to right, rgba(15, 31, 53, 0.8) 0%, transparent 15%, transparent 85%, rgba(15, 31, 53, 0.8) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.highlight-img--contain img {
+  object-fit: contain;
+}
+
+.highlight-triptych {
+  display: flex;
+  gap: 0;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: black;
+}
+
+.triptych-panel {
+  flex: 1;
+  overflow: hidden;
+}
+
+.triptych-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 .highlight-img--placeholder {
   background: var(--bg-alt);
   display: flex;
