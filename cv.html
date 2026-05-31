@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Chandrika Rao, PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cv-main {
+      padding-top: calc(var(--nav-h) + 64px);
+      padding-bottom: 100px;
+    }
+
+    /* Header */
+    .cv-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .cv-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+
+    .cv-header-rule {
+      width: 80px;
+      height: 2px;
+      background: var(--teal);
+      margin: 20px auto 16px;
+    }
+
+    .cv-header-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      margin-top: 16px;
+    }
+
+    .cv-header-links a {
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .cv-header-links a:hover { color: var(--navy); }
+
+    .cv-header-sep {
+      font-size: .9rem;
+      color: var(--teal);
+      opacity: 0.4;
+    }
+
+    .cv-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 0;
+      flex-direction: column;
+    }
+
+    .cv-contact a {
+      font-size: .85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .cv-contact a:hover { color: var(--teal); }
+
+    .cv-download {
+      flex-shrink: 0;
+      font-size: .8rem;
+      padding: 9px 20px;
+      align-self: flex-start;
+    }
+
+    /* Two-column layout */
+    .cv-body {
+      border-top: 1px solid var(--border);
+    }
+
+    .cv-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 0 56px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-label {
+      padding-top: 3px;
+    }
+
+    .cv-label-text {
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      line-height: 1.4;
+    }
+
+    /* Entries */
+    .cv-entry {
+      margin-bottom: 28px;
+    }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-entry--compact { margin-bottom: 14px; }
+
+    .cv-entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 2px;
+    }
+
+    .cv-entry-org {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -.01em;
+    }
+
+    .cv-entry-date {
+      font-size: .78rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .cv-entry-role {
+      font-size: .85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .cv-entry-body {
+      font-size: .875rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .cv-entry-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 0;
+    }
+
+    .cv-entry-body li {
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .cv-entry-body li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-light);
+    }
+
+    /* Publications */
+    .cv-pub-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cv-pub {
+      font-size: .875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .cv-pub strong { color: var(--navy); }
+
+    .cv-pub-badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--teal);
+      background: var(--teal-bg);
+      padding: 1px 7px;
+      border-radius: 100px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    .cv-pub-badge--prep {
+      color: #7c5a0d;
+      background: #fef3cd;
+    }
+
+    /* Skills */
+    .cv-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cv-skill {
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--teal);
+      background: var(--teal-bg);
+      border: 1px solid rgba(13, 124, 110, 0.2);
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    .cv-positions {
+      margin-top: 4px;
+      gap: 5px !important;
+    }
+    .cv-positions li {
+      font-size: .85rem !important;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    /* Talks */
+    .cv-talk-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cv-talk-list li {
+      font-size: .875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .cv-talk-date {
+      font-size: .78rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-style: normal;
+    }
+
+    /* Print */
+    @media print {
+      .nav, .cv-download, .footer { display: none !important; }
+      .cv-main { padding-top: 24px; }
+      body { font-size: 13px; }
+      a { color: inherit !important; text-decoration: none !important; }
+      .cv-row { padding: 28px 0; }
+    }
+
+    @media (max-width: 680px) {
+      .cv-row {
+        grid-template-columns: 1fr;
+        gap: 12px 0;
+      }
+      .cv-skills { grid-template-columns: 1fr; }
+      .cv-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav nav--scrolled">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">Chandrika Rao, PhD</a>
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#writing">Writing</a></li>
+        <li><a href="/#publications">Publications</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="cv-main">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="cv-header">
+        <div>
+          <h1>Chandrika Rao, PhD</h1>
+          <div class="cv-header-links">
+            <a href="/#contact">Contact</a>
+            <span class="cv-header-sep">&middot;</span>
+            <a href="https://www.linkedin.com/in/chandrikaraophd/" target="_blank" rel="noopener">LinkedIn</a>
+            <span class="cv-header-sep">&middot;</span>
+            <a href="https://scholar.google.com/citations?user=-xn5mYcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-body">
+
+        <!-- Education -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Education</span></div>
+          <div class="cv-content">
+
+            <div class="cv-entry cv-entry--compact">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">University of Edinburgh</div>
+                <div class="cv-entry-date">2014&ndash;2019</div>
+              </div>
+              <div class="cv-entry-role">PhD in Stem Cell Biology &mdash; MRC Centre for Regenerative Medicine</div>
+            </div>
+
+            <div class="cv-entry cv-entry--compact">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">University of Bristol</div>
+              </div>
+              <ul class="cv-talk-list cv-positions">
+                <li><span>MSc in Biomedical Sciences Research</span><span class="cv-talk-date">2009&ndash;2010</span></li>
+                <li><span>BSc (Hons) in Biochemistry</span><span class="cv-talk-date">2006&ndash;2009</span></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Research Experience -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Research Experience</span></div>
+          <div class="cv-content">
+
+            <div class="cv-entry cv-entry--compact">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">New York Stem Cell Foundation Research Institute, NY</div>
+              </div>
+              <ul class="cv-talk-list cv-positions">
+                <li><span>Staff Scientist</span><span class="cv-talk-date">2023&ndash;2025</span></li>
+                <li><span>NYSCF-Druckenmiller Fellow</span><span class="cv-talk-date">2022&ndash;2023</span></li>
+                <li><span>Postdoctoral Research Fellow</span><span class="cv-talk-date">2020&ndash;2023</span></li>
+              </ul>
+            </div>
+
+            <div class="cv-entry cv-entry--compact">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">MRC Centre for Regenerative Medicine, University of Edinburgh</div>
+                <div class="cv-entry-date">2014&ndash;2019</div>
+              </div>
+              <div class="cv-entry-role">PhD Candidate</div>
+            </div>
+
+            <div class="cv-entry cv-entry--compact">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">The Gurdon Institute, University of Cambridge</div>
+                <div class="cv-entry-date">2012&ndash;2014</div>
+              </div>
+              <div class="cv-entry-role">Chief Research Assistant</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Editorial & Science Communication -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Editorial &amp; Science Communication</span></div>
+          <div class="cv-content">
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">Peer Reviewer</div>
+                <div class="cv-entry-date">2020&ndash;present</div>
+              </div>
+              <div class="cv-entry-body">
+                Ad hoc reviewer for journals including <em>Nature</em>, <em>Nature Neuroscience</em>, <em>Communications Biology</em>, <em>Frontiers in Immunology</em>, <em>Fluids and Barriers of the CNS</em>, and <em>Cellular &amp; Molecular Biology Letters</em>.
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">International Society for Stem Cell Research (ISSCR)</div>
+                <div class="cv-entry-date">2025&ndash;present</div>
+              </div>
+              <div class="cv-entry-role">Science Communications Contributor</div>
+              <div class="cv-entry-body">
+                Creating public-facing educational content on stem cell research for scientists, patients, and the public, including posts on LinkedIn and Instagram covering disease modelling, clinical applications, and patient resources.
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">The MedReport Foundation</div>
+                <div class="cv-entry-date">2025&ndash;present</div>
+              </div>
+              <div class="cv-entry-role">Medical Review Board Member</div>
+              <div class="cv-entry-body">
+                Reviewing and verifying citations, evaluating data, and assessing factual accuracy of health content for a medical literacy non-profit.
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">Cambridge Proofreading</div>
+                <div class="cv-entry-date">2021</div>
+              </div>
+              <div class="cv-entry-role">Copyeditor (Volunteer)</div>
+              <div class="cv-entry-body">
+                Copy-edited academic journal manuscripts and grant proposals to improve style, clarity, and language.
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">Freelance Academic Editor</div>
+                <div class="cv-entry-date">2011&ndash;2012</div>
+              </div>
+              <div class="cv-entry-body">
+                Editorial support for 200+ biomedical research manuscripts, grant reports, and theses across diverse therapeutic areas.
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">ResearchGate, Berlin, Germany</div>
+                <div class="cv-entry-date">2011</div>
+              </div>
+              <div class="cv-entry-role">Scientific Communications &amp; Marketing Intern</div>
+              <div class="cv-entry-body">
+                Developed content strategy and stakeholder engagement for an online research platform.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Teaching & Mentorship -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Teaching &amp; Mentorship</span></div>
+          <div class="cv-content">
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">Science Mentorship Institute (Sci-MI)</div>
+                <div class="cv-entry-date">2026&ndash;present</div>
+              </div>
+              <div class="cv-entry-role">Neuroscience Mentor</div>
+              <div class="cv-entry-body">Providing one-to-one mentorship for students pursuing careers in neuroscience.</div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">University of Edinburgh</div>
+                <div class="cv-entry-date">2015&ndash;2017</div>
+              </div>
+              <div class="cv-entry-role">Course Instructor</div>
+              <div class="cv-entry-body">
+                Taught undergraduate courses including &ldquo;Cells to Organisms&rdquo; and &ldquo;Genetics for Medical Students&rdquo;, guiding students in data interpretation and essay writing.
+              </div>
+            </div>
+
+            <div class="cv-entry cv-entry--compact">
+              <div class="cv-entry-head">
+                <div class="cv-entry-org">Research Mentorship &amp; Public Engagement</div>
+                <div class="cv-entry-date">2020&ndash;2025</div>
+              </div>
+              <div class="cv-entry-body">Mentored four undergraduate research interns; panelist for STEM career discussions; guest lectures on stem cell biology and neurodegeneration to undergraduate and high school audiences.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Awards & Fellowships -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Awards &amp; Fellowships</span></div>
+          <div class="cv-content">
+            <ul class="cv-talk-list">
+              <li><span>NYSCF-Druckenmiller Postdoctoral Fellowship</span><span class="cv-talk-date">2022&ndash;2023</span></li>
+              <li><span>Medical Research Council UK PhD Studentship</span><span class="cv-talk-date">2014&ndash;2018</span></li>
+              <li><span>Company of Biologists Travel Award</span><span class="cv-talk-date">2019</span></li>
+              <li><span>British Society for Developmental Biology Conference Grant</span><span class="cv-talk-date">2017</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Publications -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Publications</span></div>
+          <div class="cv-content">
+
+            <ul class="cv-pub-list">
+
+              <li class="cv-pub">
+                <strong>Rao C</strong>, Ehrlich M, Gandy S, Fossati V et al. iPSC-derived microglia reveal divergent TREM2 and TYROBP/DAP12 signalling pathways in late-onset Alzheimer&rsquo;s disease.
+                <span class="cv-pub-badge cv-pub-badge--prep">In preparation</span>
+              </li>
+
+              <li class="cv-pub">
+                <strong>Rao C</strong>, Semrau S, Fossati V. Decoding microglial functions in Alzheimer&rsquo;s disease: insights from human models. <em>Trends in Immunology</em>. 2025;46(4):310&ndash;323.
+              </li>
+
+              <li class="cv-pub">
+                <strong>Rao C</strong> (contributing author). Pluripotent Stem Cells and Reprogramming. Chapter 2 in: Alviano F, editor. <em>Stem Cells</em>. Esculapio; 2024. ISBN: 978-8893851718.
+              </li>
+
+              <li class="cv-pub">
+                Clayton BLL, Barbar L, Sapar M, Kalpana K, <strong>Rao C</strong>, Migliori B et al. Patient iPSC models reveal glia-intrinsic phenotypes in multiple sclerosis. <em>Cell Stem Cell</em>. 2024;31(11):1701&ndash;1713.
+              </li>
+
+              <li class="cv-pub">
+                Kalpana K, <strong>Rao C</strong>, Semrau S, Zhang B, Noggle S, Fossati V. Generating neuroimmune assembloids using human iPSC-derived cortical organoids and microglia. <em>Methods in Molecular Biology</em>. 2025;2951:139&ndash;158.
+              </li>
+
+              <li class="cv-pub">
+                Marotta D, <strong>Rao C</strong>, Fossati V. Human induced pluripotent stem cell (iPSC) handling protocols: maintenance, expansion, and cryopreservation. <em>Methods in Molecular Biology</em>. 2021;2951:1&ndash;15.
+              </li>
+
+              <li class="cv-pub">
+                <strong>Rao C</strong>, Malaguti M, Mason JO, Lowell S. The transcription factor E2A drives neural differentiation in pluripotent cells. <em>Development</em>. 2020;147(12):dev184093.
+              </li>
+
+              <li class="cv-pub">
+                Laresgoiti U, Nikoli&#263; MZ, <strong>Rao C</strong>, Brady JL, Richardson RV, Batchen EJ et al. Lung epithelial tip progenitors integrate glucocorticoid- and STAT3-mediated signals to control progeny fate. <em>Development</em>. 2016;143(20):3686&ndash;3699.
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Conference Presentations -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Presentations &amp; Invited Talks</span></div>
+          <div class="cv-content">
+            <ul class="cv-talk-list">
+              <li><span>Invited panelist &mdash; <em>Science</em> journal, <em>iPSCs and flow cytometry in neurological disease research</em> (virtual)</span><span class="cv-talk-date">2024</span></li>
+              <li><span>Invited seminars, Icahn School of Medicine at Mount Sinai, New York</span><span class="cv-talk-date">2021&ndash;2024</span></li>
+              <li><span>Cold Spring Harbor Laboratory &mdash; Neurodegenerative Diseases: Biology &amp; Therapeutics</span><span class="cv-talk-date">2024</span></li>
+              <li><span>Keystone Symposium &mdash; Neurodegeneration &amp; Neuroimmune Interactions</span><span class="cv-talk-date">2023</span></li>
+              <li><span>International Society for Stem Cell Research Annual Meetings</span><span class="cv-talk-date">2022, 2023</span></li>
+              <li><span>Invited seminar, Hospital for Sick Children, University of Toronto</span><span class="cv-talk-date">2019</span></li>
+              <li><span>Invited seminar, New York Stem Cell Foundation Research Institute</span><span class="cv-talk-date">2019</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="cv-row">
+          <div class="cv-label"><span class="cv-label-text">Laboratory Skills</span></div>
+          <div class="cv-content">
+            <div class="cv-skills">
+              <div class="cv-skill">Pluripotent cell culture (mouse and human)</div>
+              <div class="cv-skill">Molecular cloning and genotyping</div>
+              <div class="cv-skill">Differentiation to neurons, microglia, and astrocytes</div>
+              <div class="cv-skill">Western blotting</div>
+              <div class="cv-skill">Co-culture and 3D organoid culture</div>
+              <div class="cv-skill">Immunocytochemistry</div>
+              <div class="cv-skill">CRISPR/Cas9 gene editing</div>
+              <div class="cv-skill">Confocal microscopy</div>
+              <div class="cv-skill">RNA isolation, cDNA synthesis, and qPCR</div>
+              <div class="cv-skill">Live cell imaging and analysis (IncuCyte)</div>
+              <div class="cv-skill">Data analysis (Excel, R)</div>
+              <div class="cv-skill">Automation and liquid handling robotics</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Chandrika Rao, PhD. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
