@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --teal: #0d7c6e;
+      --teal-bg: #e8f5f3;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #ffffff;
+    }
+    .card {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      align-items: center;
+      gap: 72px;
+      padding: 0 90px;
+      position: relative;
+    }
+    /* soft brand accent in the corner */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -160px; right: -160px;
+      width: 480px; height: 480px;
+      background: var(--teal-bg);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .text { flex: 1; z-index: 1; }
+    .eyebrow {
+      display: block;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 76px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    h1 .teal { color: var(--teal); }
+    .lead {
+      font-size: 25px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 560px;
+    }
+    .url {
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: .02em;
+    }
+    .photo {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      z-index: 1;
+      border: 8px solid #ffffff;
+      outline: 2px solid var(--teal);
+      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+    }
+    .photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: translateY(-8%);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="text">
+      <span class="eyebrow">Stem Cell Biologist &nbsp;&bull;&nbsp; Scientific Writer &nbsp;&bull;&nbsp; Educator</span>
+      <h1>Chandrika Rao, <span class="teal">PhD</span></h1>
+      <p class="lead">Over a decade of stem cell research, now directed towards scientific writing, editorial work, and science education.</p>
+      <div class="url">chandrikaraophd.github.io</div>
+    </div>
+    <div class="photo">
+      <img src="Headshot.JPG" alt="Chandrika Rao, PhD" />
+    </div>
+  </div>
+</body>
+</html>
