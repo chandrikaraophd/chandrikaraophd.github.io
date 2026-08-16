@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chandrikaraophd.github.io/sitemap.xml

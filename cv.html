@@ -16,7 +16,10 @@
   <meta name="twitter:title" content="CV — Chandrika Rao, PhD" />
   <meta name="twitter:description" content="Curriculum vitae of Chandrika Rao, PhD — stem cell biologist, scientific writer, and editor." />
   <meta name="twitter:image" content="https://chandrikaraophd.github.io/og-image.png" />
+  <link rel="canonical" href="https://chandrikaraophd.github.io/cv.html" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="og-image.png" />
+  <meta name="theme-color" content="#0d7c6e" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -73,26 +76,13 @@
       opacity: 0.4;
     }
 
-    .cv-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 0;
-      flex-direction: column;
-    }
-
-    .cv-contact a {
+    /* Contact line for print/PDF only — the on-screen header links
+       carry the same information as clickable text. */
+    .cv-print-contact {
+      display: none;
       font-size: .85rem;
       color: var(--text-muted);
-      text-decoration: none;
-      transition: color .15s;
-    }
-    .cv-contact a:hover { color: var(--teal); }
-
-    .cv-download {
-      flex-shrink: 0;
-      font-size: .8rem;
-      padding: 9px 20px;
-      align-self: flex-start;
+      margin-top: 12px;
     }
 
     /* Two-column layout */
@@ -273,11 +263,25 @@
 
     /* Print */
     @media print {
-      .nav, .cv-download, .footer { display: none !important; }
+      .nav, .cv-header-links, .footer { display: none !important; }
       .cv-main { padding-top: 24px; }
       body { font-size: 13px; }
       a { color: inherit !important; text-decoration: none !important; }
       .cv-row { padding: 28px 0; }
+
+      /* Swap the clickable header links for a plain contact line, and
+         spell out DOIs, so a printed copy stands on its own. */
+      .cv-print-contact { display: block !important; }
+      .cv-pub a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: .82em;
+        word-break: break-all;
+      }
+
+      /* Keep individual entries intact across page breaks, but let a
+         section flow onto the next page so pages fill properly. */
+      .cv-entry, .cv-pub, .cv-talk-list li { break-inside: avoid; }
+      .cv-label { break-after: avoid; }
     }
 
     @media (max-width: 680px) {
@@ -312,12 +316,17 @@
         <div>
           <h1>Chandrika Rao, PhD</h1>
           <div class="cv-header-links">
-            <a href="/#contact">Contact</a>
+            <a href="mailto:chandrikarao@icloud.com">chandrikarao@icloud.com</a>
             <span class="cv-header-sep">&middot;</span>
             <a href="https://www.linkedin.com/in/chandrikaraophd/" target="_blank" rel="noopener">LinkedIn</a>
             <span class="cv-header-sep">&middot;</span>
             <a href="https://scholar.google.com/citations?user=-xn5mYcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
           </div>
+          <p class="cv-print-contact">
+            chandrikarao@icloud.com
+            &nbsp;&middot;&nbsp; linkedin.com/in/chandrikaraophd
+            &nbsp;&middot;&nbsp; chandrikaraophd.github.io
+          </p>
         </div>
       </div>
 
@@ -333,7 +342,7 @@
                 <div class="cv-entry-org">University of Edinburgh</div>
                 <div class="cv-entry-date">2014&ndash;2019</div>
               </div>
-              <div class="cv-entry-role">PhD in Stem Cell Biology &mdash; MRC Centre for Regenerative Medicine</div>
+              <div class="cv-entry-role">PhD in Stem Cell Biology &mdash; Centre for Regenerative Medicine</div>
             </div>
 
             <div class="cv-entry cv-entry--compact">
@@ -367,7 +376,7 @@
 
             <div class="cv-entry cv-entry--compact">
               <div class="cv-entry-head">
-                <div class="cv-entry-org">MRC Centre for Regenerative Medicine, University of Edinburgh</div>
+                <div class="cv-entry-org">Centre for Regenerative Medicine, University of Edinburgh</div>
                 <div class="cv-entry-date">2014&ndash;2019</div>
               </div>
               <div class="cv-entry-role">PhD Candidate</div>
@@ -395,7 +404,7 @@
                 <div class="cv-entry-date">2020&ndash;present</div>
               </div>
               <div class="cv-entry-body">
-                Ad hoc reviewer for journals including <em>Nature</em>, <em>Nature Neuroscience</em>, <em>Communications Biology</em>, <em>Frontiers in Immunology</em>, <em>Fluids and Barriers of the CNS</em>, and <em>Cellular &amp; Molecular Biology Letters</em>.
+                Ad hoc reviewer for journals including <em>Nature</em>, <em>Nature Neuroscience</em>, <em>Communications Biology</em>, <em>Frontiers in Immunology</em>, <em>Frontiers in Cellular Neuroscience</em>, <em>Fluids and Barriers of the CNS</em>, and <em>Cellular &amp; Molecular Biology Letters</em>.
               </div>
             </div>
 
@@ -586,7 +595,7 @@
               <div class="cv-skill">CRISPR/Cas9 gene editing</div>
               <div class="cv-skill">Confocal microscopy</div>
               <div class="cv-skill">RNA isolation, cDNA synthesis, and qPCR</div>
-              <div class="cv-skill">Live cell imaging and analysis (IncuCyte)</div>
+              <div class="cv-skill">Live cell imaging and analysis (Incucyte)</div>
               <div class="cv-skill">Data analysis (Excel, R)</div>
               <div class="cv-skill">Automation and liquid handling robotics</div>
             </div>

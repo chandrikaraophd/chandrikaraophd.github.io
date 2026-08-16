@@ -63,6 +63,30 @@ a {
 }
 a:hover { color: var(--navy); }
 
+/* Visible keyboard focus. :focus-visible keeps the ring off mouse clicks
+   while still showing it for tab navigation. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* On the dark contact panel the teal ring has too little contrast. */
+.contact-section a:focus-visible {
+  outline-color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 /* =============================================
    Layout
    ============================================= */
