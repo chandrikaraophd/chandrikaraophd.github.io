@@ -1,7 +1,13 @@
-# CV and cover letter files — keep off public GitHub
-*.pdf
-5 Ways Stem Cells Are Advancing Medicine - Final Post \[Linkedin\] copy/
+# Local source material — print-res originals, Keynote decks, social-card
+# generator. Kept on disk for re-exporting web assets; never published.
+src/
 
-# OS and source files
+# OS cruft
 .DS_Store
+
+# Belt-and-braces: nothing private should reach this repo at all (job-hunt
+# material lives in the sibling ../job-hunt/ folder), but if a CV, cover
+# letter, or Keynote ever lands here by accident, don't let it be committed.
+*.pdf
 *.key
+*.docx
